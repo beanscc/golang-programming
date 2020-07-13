@@ -1,9 +1,7 @@
 # golang-programming
 Golang programming 总结回顾夯实基础
 
-关于 go 的更多官方信息，参见[golang.org](https://golang.org) (国内可以参见[golang.google.cn](https://golang.google.cn))
-
-- [go doc](https://golang.google.cn/doc/)
+关于 go 的更多信息，参见官网[golang.org](https://golang.org) (国内可以参见[golang.google.cn](https://golang.google.cn))
 
 重点关注以下几部分文档：
 - Effective Go
@@ -33,6 +31,7 @@ Golang programming 总结回顾夯实基础
     - [channel](reference-types/channel.md)
 - [Interface](interface/interface.md)
 - [Reflection](reflect/reflect.md)
+- error
 - defer and panic
     - [defer](defer-panic/defer.md)
     - [panic](defer-panic/panic.md)
@@ -51,11 +50,22 @@ Golang programming 总结回顾夯实基础
     - [channel](channle/channel.md)
         - channel
         - select
+    - [concurrency-patterns](concurrency/patterns.md)
 - [scheduler](scheduler/scheduler.md)
     gpm 模型
 - gc
-    - 内存分配
-    - gc
-    - 栈内容
+    - [内存分配](gc/memery-allocator.md)
+    - [gc](gc/memery-allocator.md)
+    - [栈内容](gc/stack-allocator.md)
+- go程序是如何启动的
+    - [bootstrap](init/bootstrap.md)
+    - [init](init/init.md)
+- [profiling](profiling/profiling.md)
+- [单元测试](command/test.md)
+- [包管理工具 module](command/module.md)
+- [代码检查](command/lint.md)
 - 标准包
+    - [flag](packages/flag.md)
     - [json](packages/json.md)
+- 其他文章
+    - [standard-go-project-layout](https://github.com/golang-standards/project-layout) [译](posts/standard-go-project-layout.md)

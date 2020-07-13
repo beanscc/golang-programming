@@ -31,7 +31,7 @@ s = `你好，世界`
 ### 长度
 
 - 内置函数 len(str) 返回字符串str的字节长度，而非字符长度
-- utf8.RuneCountInString(str) 返回字符串 str 的字符长度
+- `utf8.RuneCountInString(str)` 返回字符串 str 的字符长度
 
 ```go
 package main
@@ -168,4 +168,5 @@ type StringHeader struct {
 
 ### string 相关文章
 
-- [Strings, bytes, runes and characters in Go](https://blog.golang.org/strings)
+- [Strings, bytes, runes and characters in Go](strings_bytes_runes_characters_in_go.md)
+- https://blog.golang.org/normalization

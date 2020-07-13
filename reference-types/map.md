@@ -99,3 +99,8 @@ var hash = map[string]bool{
 ```
 
 #### 运行时 make
+
+
+## 相关文章
+
+- https://blog.golang.org/go-maps-in-action
