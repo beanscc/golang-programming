@@ -50,6 +50,8 @@ Go 提供了 11 种整型，其中包括 5 种有符号的和 5 种无符号的�
 
 Go 种提供了 2 种类型的浮点数类型：`float32` 和 `float64`
 
+> Golang浮点型的默认舍入规则——四舍六入五成双 https://studygolang.com/articles/8018
+
 Go 中使用 [IEEE-754](http://em.wikipedia.org/wiki/IEEE_754-2008) 格式表示浮点数，该格式也是很多处理器以及浮点数单元所使用的原生格式
 
 浮点数的范围极限值可以在 math 包中找到。math.MaxFloat32 表示 float32 能表示的最大值; math.MaxFloat64 表示 float64 能表示的最大值

@@ -2,11 +2,18 @@
 
 - doc:https://golang.google.cn/cmd/
 
+
+
 ## go build
 
 compile packages and dependencies
 
-— ldflags
+usage:
+```
+go build [-o output] [-i] [build flags] [packages]
+```
+
+— ldflags 链接参数
 
 ```bash
 #!/bin/bash
@@ -15,6 +22,16 @@ commit=`git rev-parse --short HEAD`
 
 # -ldflags 参数说明 https://golang.google.cn/cmd/link/
 go build -ldflags "-X main.gitHash=$commit -X main.buildTime=$buildTime" main.go
+```
+
+- gcflags 编译参数
+
+```
+# 打印出汇编信息
+go tool compile -S -N -l main.go
+
+# 指定编译参数 -S -N -l 
+go build -gcflags "-S -N -l" main.go
 ```
 
 ## go get

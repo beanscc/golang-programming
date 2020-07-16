@@ -36,7 +36,7 @@ GDB 使用
         fmt.Println("hello, world")
     }
     ```
-- 编译：`go build -gcflags "-N -l"` -o test test.go
+- 编译：`go build -gcflags "-N -l" -o test test.go`
 - 使用 gdb 
     - 使用 gdb debug test：`gdb test`
     - 查看 test 的入口：`info files`
