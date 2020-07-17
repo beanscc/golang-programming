@@ -4,24 +4,24 @@ Golang programming 总结回顾夯实基础
 关于 go 的更多信息，参见官网[golang.org](https://golang.org) (国内可以参见[golang.google.cn](https://golang.google.cn))
 
 重点关注以下几部分文档：
-- Effective Go
-- Diagnostics
-- Frequently Asked Questions (FAQ)
-- Package Documentation
-- Command Documentation (https://golang.google.cn/cmd/)
-- Language Specification (https://golang.google.cn/ref/spec)
-- The Go Memory Model (https://golang.google.cn/ref/mem)
+- Effective Go (https://golang.org/doc/effective_go.html)
+- Diagnostics (https://golang.org/doc/diagnostics.html)
+- Frequently Asked Questions (FAQ) (https://golang.org/doc/faq)
+- Package Documentation (https://golang.org/pkg)
+- Command Documentation (https://golang.org/cmd/)
+- Language Specification (https://golang.org/ref/spec)
+- The Go Memory Model (https://golang.org/ref/mem)
 
 # Contents
 
 - [安装](install.md)
 - [程序结构](程序结构.md)     
 - Basic types
-    - [布尔类型](basic-types/bool.md)
-    - [数值类型](basic-types/number.md)
-    - [字符串类型](basic-types/string.md)
+    - [bool](basic-types/bool.md)
+    - [number](basic-types/number.md)
+    - [string](basic-types/string.md)
 - Aggregate types
-    - [数组](aggregate-types/array.md)
+    - [array](aggregate-types/array.md)
     - [struct](aggregate-types/struct.md)
 - Reference types
     - [pointer](reference-types/pointer.md)
@@ -33,10 +33,10 @@ Golang programming 总结回顾夯实基础
 - [Reflection](reflect/reflect.md)
 - error
 - defer and panic
-    - [defer](defer-panic/defer.md)
-    - [panic](defer-panic/panic.md)
+    - [defer](errors/defer.md)
+    - [panic](errors/panic.md)
 - Concurrency
-    - [context](context/context.md)
+    - [context](concurrency/context.md)
     - sync
         - [Lock](sync/lock.md)
             - Mutex
