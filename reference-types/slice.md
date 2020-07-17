@@ -13,8 +13,6 @@ slice 缩小：通过对切片再次切片来缩小一个切片的大小
 ```go
 // runtime/slice.go
 // SliceHeader 是 slice 在 runtime 的表现形式。
-// 它不能被安全地或方便地使用，且它的表现形式可能在后期发布版本中改变。
-// 此外，Data 字段不足以保证它所指向的数据不被gc，所以程序必须保留一个单独的、正确地输入指向底层数据的指针。
 type SliceHeader struct {
 	Data uintptr
 	Len  int
@@ -32,7 +30,7 @@ type sliceHeader struct {
 其中 `Data` 字段是指向底层数组的指针， `Len` 是切片可访问元素的个数（即长度）， `Cap` 是切片允许增长到的元素个数（即容量，也是 `Data`
 数组的大小）
 
-示例代码 slice-1
+**示例代码 slice-1**
 ```go
 package main
 
@@ -62,13 +60,14 @@ func main() {
 
 使用字面量的方式创建切片时，大部分工作会在编译期间完成，但使用 make 关键字创建切片时，很多工作需要在运行时完成
 
-直接声明的方式如上面例子所示，下面将介绍其他几种方式
+直接声明的方式如上面例子所示比较简单，下面介绍其他几种方式
 
 #### make
 
 查看`示例代码 slice-1` 的汇编信息: `go tool compile -S -N main.go`, 得到如下：
 
 ```
+...
 "".main STEXT size=1185 args=0x0 locals=0x1d8
         ...
         0x006c 00108 (main.go:11)       CALL    runtime.makeslice(SB)
@@ -113,7 +112,7 @@ func makeslice(et *_type, len, cap int) unsafe.Pointer {
 #### 字面量
 
 通过字面量方式创建并初始化切片的方式比较简单
-> 需要注意初始化时是否有使用索引号，因为使用索引号初始化切片长度和容量并非看起来那么简单哦
+> 需要注意初始化时是否有使用索引号，因为使用索引号初始化切片时，其长度和容量并非看起来那么简单哦
 
 ```go
 package main
@@ -137,7 +136,9 @@ func main() {
 
 #### 下标截取
 
-切片创建示例：
+TODO
+
+**切片创建示例：**
 
 ```go
 package main
