@@ -370,10 +370,11 @@ append() 用于向切片中追加元素，根据函数定义，一次可追加�
 func append(slice []Type, elems ...Type) []Type
 ```
 
-
 append 向切片中追加元素，其实是向切片底层数组中添加元素，但底层数组的长度是固定的，一旦定义后，就不可修改。当切片索引指向的底层数组
 的最后一个元素已保存有值，就无法继续向该数组中追加元素了。这时，slice 的 append 操作就会申请一块更大内存的用于容纳原底层数组所有元素和新追加
 元素。为了避免每次 append 都触发底层数组的扩容，会在每次扩容时候预留一定空间，每次扩容都需要迁移所有数据，成本较大
+
+下面看一下 `append()` 时底层数组长度不够时，需要扩容时的情况；
 
 ```go
 package main
@@ -540,6 +541,71 @@ func roundupsize(size uintptr) uintptr {
 }
 ```
 
+**当 slice 切片底层数组还有容量时， append(slice, v) 操作后 slice 发生了什么变化？**
+
+看下面这段代码：
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+	"unsafe"
+)
+
+func main() {
+	slice := make([]int, 1, 10)
+	fmt.Println("slice before append:", slice)
+	slice1 := append(slice, 10)
+	fmt.Println("slice after append:", slice)
+	fmt.Println("slice1:", slice1)
+	// output
+	/*
+		slice before append: [0]
+		slice after append: [0]
+		slice1: [0 10]
+	*/
+}
+```
+
+其中 `slice` 切片底层数组有足够的容量，可以容纳 `10`，但在 `append` 操作后，打印 `slice` 结果同之前一样无任何变化。真的如此吗？
+我们来看下底层的数据的变化：
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+	"unsafe"
+)
+
+func main() {
+	slice := make([]int, 1, 10)
+	fmt.Println("slice before append:", slice, (*reflect.SliceHeader)(unsafe.Pointer(&slice)))
+
+	slice1 := append(slice, 10)
+	fmt.Println("slice after append:", slice, (*reflect.SliceHeader)(unsafe.Pointer(&slice)))
+	fmt.Println("slice1:", slice1, (*reflect.SliceHeader)(unsafe.Pointer(&slice1)))
+
+	v := *(*[10]int)(unsafe.Pointer((*reflect.SliceHeader)(unsafe.Pointer(&slice)).Data)) // slice 底层 array
+	fmt.Println("the underlying array of slice:", v)
+
+	// output
+	/*
+		slice before append: [0] &{824633835760 1 10}
+		slice after append: [0] &{824633835760 1 10}
+		slice1: [0 10] &{824633835760 2 10}
+		the underlying array of slice: [0 10 0 0 0 0 0 0 0 0]
+	*/
+}
+```
+
+可以看到 `append()` 前后 `slice` 的结构看上去没有变化，但我们通过 `unsafe.Pointer` 访问其底层数组时，可以看出其实底层数组已经有了变化，
+已经将 `10` 追加到了数组中，只是由于 `append()` 操作并为改变传入 `slice` 的 `len` 和 `cap` 字段值，所以虽然 `10` 已存入底层数组 `arr[1]` 
+索引位置，但 `len(slice) == 1`，索引它无法访问底层数组索引为 1 的元素值，仅仅能访问索引为 0 的元素值 0
+
+
 ## 在函数间传递切片
 
 在函数间传递切片，就是要以值的方式传递切片。由于切片的尺寸很小，在函数间复制和传递切片成本也很低。
@@ -552,8 +618,8 @@ func roundupsize(size uintptr) uintptr {
 
 ## 相关文章
 
-- https://blog.golang.org/slices
-- https://blog.golang.org/go-slices-usage-and-internals
+- [Arrays, slices (and strings): The mechanics of 'append'](https://blog.golang.org/slices)
+- [Go Slices: usage and internals](https://blog.golang.org/go-slices-usage-and-internals)
 
 参考资料：
 - [面向信仰编程-go-slice](https://draveness.me/golang/docs/part2-foundation/ch03-datastructure/golang-array-and-slice)
