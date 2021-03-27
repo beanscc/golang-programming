@@ -67,5 +67,7 @@ Golang programming 总结回顾夯实基础
 - 标准包
     - [flag](packages/flag.md)
     - [json](packages/json.md)
+- 遇到的问题
+    - [fmt panic](problem/race-fmt-panic.md)
 - 其他文章
     - [standard-go-project-layout](https://github.com/golang-standards/project-layout) [译](posts/standard-go-project-layout.md)
