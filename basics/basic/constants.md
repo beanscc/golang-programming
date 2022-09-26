@@ -55,6 +55,42 @@ bool 真值由预声明的常量 `true` 和 `false` 表示
 
 ### 声明和初始化
 
+
+
+- 常量与变量一样声明，但使用 `const` 关键字
+- 常量可以是 字符/字符串/布尔值/数值类型
+- 常量不能使用短变量声明语法 `:=` 
+
+
+
+```go
+package main
+
+import "fmt"
+
+const Pi = 3.14
+
+func main() {
+	const World = "世界"
+	fmt.Println("Hello", World)
+	fmt.Println("Happy", Pi, "Day")
+
+	const Truth = true
+	fmt.Println("Go rules?", Truth)
+	
+	/*
+	-- output：
+	  Hello 世界
+	  Happy 3.14 Day
+	  Go rules? true
+	*/
+}
+```
+
+
+
+
+
 - 在定义常量组时，如果不提供初始化值，则表示将使用上一行的表达式
 - 使用相同的表达式不代表具有相同的值
 - itoa是常量的计数器，从 0 开始，组中每定义 1 个常量，则itoa自动递增 1
