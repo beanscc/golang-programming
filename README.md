@@ -31,9 +31,8 @@ golang playground (https://go.dev/play/)
     - 赋值
     - 类型
     - 包和文件
-    - 
     - 作用域
-
+    
 3. 基础数据结构
 
 4. 控制结构
