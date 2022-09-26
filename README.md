@@ -1,4 +1,5 @@
 # golang-programming
+
 Golang programming 总结回顾夯实基础
 
 关于 go 的更多信息，参见官网[golang.org](https://golang.org) (国内可以参见[golang.google.cn](https://golang.google.cn))
@@ -54,20 +55,37 @@ Golang programming 总结回顾夯实基础
 - [scheduler](scheduler/scheduler.md)
     gpm 模型
 - gc
-    - [内存分配](gc/memery-allocator.md)
-    - [gc](gc/memery-allocator.md)
-    - [栈内容](gc/stack-allocator.md)
+    - [内存分配](memery-and-gc/memery-allocator.md)
+    - [gc](memery-and-gc/memery-allocator.md)
+    - [栈内容](memery-and-gc/stack-allocator.md)
 - go程序是如何启动的
     - [bootstrap](init/bootstrap.md)
     - [init](init/init.md)
-- [profiling](profiling/profiling.md)
+- profiling
+    - [profiling](profiling/profiling.md)
+    - [trace](profiling/trace.md)
+- go command
+    - go build -X
+    - go tool
+    - go test/benchmark 见’单元测试‘
+    - go mod 见‘包管理工具 module’
+    - go vet 相关见‘代码检查’
 - [单元测试](command/test.md)
 - [包管理工具 module](command/module.md)
 - [代码检查](command/lint.md)
-- 标准包
-    - [flag](packages/flag.md)
-    - [json](packages/json.md)
+- 包
+    - std 标准包
+        - [flag](packages/std/flag.md)
+        - [json](packages/std/json.md)
+    - 第三方包
+        - [singleflight](packages/singleflight/singleflight.md)
+- go 查看用户代码对应汇编代码和runtime源码
+- 附录
+    - wire 依赖注入：https://github.com/google/wire
+
+
 - 遇到的问题
     - [fmt panic](problem/race-fmt-panic.md)
 - 其他文章
     - [standard-go-project-layout](https://github.com/golang-standards/project-layout) [译](posts/standard-go-project-layout.md)
+

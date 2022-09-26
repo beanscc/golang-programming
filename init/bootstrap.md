@@ -27,11 +27,11 @@ GDB 使用
 - 使用以下内容创建 test.go 文件
     ```go
     package main
-
+    
     import (
         "fmt"
     )
-
+    
     func main() {
         fmt.Println("hello, world")
     }
@@ -40,7 +40,7 @@ GDB 使用
 - 使用 gdb 
     - 使用 gdb debug test：`gdb test`
     - 查看 test 的入口：`info files`
-    - 在入口出设置断点：`b '{断点位置}'` （此处入口位置是："Entry point: 0x454e90" 中的 `0x454e90`）
+    - 在入口处设置断点：`b '{断点位置}'` （此处入口位置是："Entry point: 0x454e90" 中的 `0x454e90`）
     ```bash
     ➜  ~/work/github.com/beanscc/go-study/source/examples git:(master) ✗ gdb test
     Reading symbols from test...
@@ -96,7 +96,7 @@ TEXT _rt0_amd64(SB),NOSPLIT,$-8
 	JMP	runtime·rt0_go(SB) // 跳转到了 runtime·rt0_go
 ```
 
-这里又跳到了 `runtime·rt0_go(SB)`， gdb 再次定位：
+这里跳到了 `runtime·rt0_go(SB)`， gdb 再次定位：
 > 注意:源码文件中的 "·" 符号编译后变成正常的 "."
 
 ```bash

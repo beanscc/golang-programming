@@ -1,10 +1,8 @@
 ## why fmt panic
 
-遇到问题：
+遇到问题：TODO
 
-
-
-同样问题的case
+同样问题的case: https://github.com/golang/go/issues/39587
 
 先看下会导致这个问题的一个场景代码：
 
@@ -41,7 +39,21 @@ func request(c string) {
 运行结果：
 
 ```
-fullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: fullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: fullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: /test/test/testfullPath: panic: runtime error: invalid memory address or nil pointer dereference
+fullPath: /test/test/test
+fullPath: /test/test/test
+fullPath: /test/test/test
+....
+fullPath: /test/test/test
+fullPath: /test/test/test
+fullPath: /test/test/test
+fullPath: 
+fullPath: /test/test/test
+fullPath: /test/test/test
+fullPath: /test/test/test
+fullPath: /test/test/test
+...
+fullPath: /test/test/test
+panic: runtime error: invalid memory address or nil pointer dereference
 [signal SIGSEGV: segmentation violation code=0x1 addr=0x0 pc=0x105cd26]
 
 goroutine 18 [running]:
