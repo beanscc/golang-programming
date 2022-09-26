@@ -2,7 +2,9 @@
 
 Golang programming 总结回顾夯实基础
 
-关于 go 的更多信息，参见官网[golang.org](https://golang.org) (国内可以参见[golang.google.cn](https://golang.google.cn))
+golang 官网(https://go.dev)
+
+golang playground (https://go.dev/play/)
 
 重点关注以下几部分文档：
 - Effective Go (https://golang.org/doc/effective_go.html)
@@ -15,12 +17,46 @@ Golang programming 总结回顾夯实基础
 
 # Contents
 
-- [安装](install.md)
-- [程序结构](程序结构.md)     
+1. Get Started 
+
+    - [安装](install.md)
+
+2. 基础
+
+    1. [packages](basics/basic/packages.md)
+    2. [命名](basics/basic/names.md)
+    3. [声明和作用域](basics/basic/declarations-and-scope.md)
+    4. 变量
+
+    - 赋值
+    - 类型
+    - 包和文件
+    - 
+    - 作用域
+
+3. 基础数据结构
+
+4. 控制结构
+
+    1. 流程控制
+        1. if else
+        2. switch
+
+    2. 循环控制 for
+    3. goto
+    4. defer
+
+
+
 - Basic types
+
     - [bool](basic-types/bool.md)
+
     - [number](basic-types/number.md)
+
     - [string](basic-types/string.md)
+
+
 - Aggregate types
     - [array](aggregate-types/array.md)
     - [struct](aggregate-types/struct.md)

@@ -1,6 +1,6 @@
 ## 安装
 
-安装参见：https://golang.google.cn/doc/install
+安装参见：https://go.dev/doc/install
 
 linux源码安装说明：
 - 下载 Go 安装源码包
@@ -8,8 +8,10 @@ linux源码安装说明：
 - 设置环境变量
 - 查看 go 版本并编码验证安装的正确性
 
-下载go源码安装包[download go](https://golang.google.cn/dl/)
+下载go源码安装包[download go](https://go.dev/dl/)
+
 解压到指定位置（eg：/usr/local），将会在指定位置目录下创建 go 目录树（eg：/usr/local/go）
+
 ```bash
 tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
 ```
