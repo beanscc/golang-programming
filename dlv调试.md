@@ -1,0 +1,97 @@
+# 调试
+
+
+
+## dlv
+
+https://github.com/go-delve/delve
+
+
+
+### install
+
+```bash
+go install github.com/go-delve/delve/cmd/dlv@latest
+```
+
+
+
+### 参数说明，见 help 命令
+
+```bash
+(dlv) help
+The following commands are available:
+
+Running the program:
+    call ------------------------ Resumes process, injecting a function call (EXPERIMENTAL!!!)
+    continue (alias: c) --------- Run until breakpoint or program termination.
+    next (alias: n) ------------- Step over to next source line.
+    rebuild --------------------- Rebuild the target executable and restarts it. It does not work if the executable was not built by delve.
+    restart (alias: r) ---------- Restart process.
+    step (alias: s) ------------- Single step through program.
+    step-instruction (alias: si)  Single step a single cpu instruction.
+    stepout (alias: so) --------- Step out of the current function.
+
+Manipulating breakpoints:
+    break (alias: b) ------- Sets a breakpoint.
+    breakpoints (alias: bp)  Print out info for active breakpoints.
+    clear ------------------ Deletes breakpoint.
+    clearall --------------- Deletes multiple breakpoints.
+    condition (alias: cond)  Set breakpoint condition.
+    on --------------------- Executes a command when a breakpoint is hit.
+    toggle ----------------- Toggles on or off a breakpoint.
+    trace (alias: t) ------- Set tracepoint.
+    watch ------------------ Set watchpoint.
+
+Viewing program variables and memory:
+    args ----------------- Print function arguments.
+    display -------------- Print value of an expression every time the program stops.
+    examinemem (alias: x)  Examine raw memory at the given address.
+    locals --------------- Print local variables.
+    print (alias: p) ----- Evaluate an expression.
+    regs ----------------- Print contents of CPU registers.
+    set ------------------ Changes the value of a variable.
+    vars ----------------- Print package variables.
+    whatis --------------- Prints type of an expression.
+
+Listing and switching between threads and goroutines:
+    goroutine (alias: gr) -- Shows or changes current goroutine
+    goroutines (alias: grs)  List program goroutines.
+    thread (alias: tr) ----- Switch to the specified thread.
+    threads ---------------- Print out info for every traced thread.
+
+Viewing the call stack and selecting frames:
+    deferred --------- Executes command in the context of a deferred call.
+    down ------------- Move the current frame down.
+    frame ------------ Set the current frame, or execute command on a different frame.
+    stack (alias: bt)  Print stack trace.
+    up --------------- Move the current frame up.
+
+Other commands:
+    config --------------------- Changes configuration parameters.
+    disassemble (alias: disass)  Disassembler.
+    dump ----------------------- Creates a core dump from the current process state
+    edit (alias: ed) ----------- Open where you are in $DELVE_EDITOR or $EDITOR
+    exit (alias: quit | q) ----- Exit the debugger.
+    funcs ---------------------- Print list of functions.
+    help (alias: h) ------------ Prints the help message.
+    libraries ------------------ List loaded dynamic libraries
+    list (alias: ls | l) ------- Show source code.
+    packages ------------------- Print list of packages.
+    source --------------------- Executes a file containing a list of delve commands
+    sources -------------------- Print list of source files.
+    target --------------------- Manages child process debugging.
+    transcript ----------------- Appends command output to a file.
+    types ---------------------- Print list of types
+
+Type help followed by a command for full documentation.
+```
+
+
+
+### usage
+
+参考：https://blog.csdn.net/cugriver/article/details/126276610
+
+
+

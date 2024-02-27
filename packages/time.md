@@ -1,5 +1,21 @@
 # time
 
+
+
+## zero time
+
+```go
+func Test_ZeroTime(t *testing.T) {
+	var tt time.Time
+	t.Logf("tt.IsZero:%v, tt.Unix:%d", tt.IsZero(), tt.Unix()) 
+    // output: tt.IsZero:true, tt.Unix:-62135596800
+}
+```
+
+
+
+
+
 ## Timer
 
 ## Ticker

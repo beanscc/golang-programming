@@ -1,19 +1,19 @@
 # golang-programming
 
-Golang programming 总结回顾夯实基础
+Golang programming 学习
 
 golang 官网(https://go.dev)
 
 golang playground (https://go.dev/play/)
 
 重点关注以下几部分文档：
-- Effective Go (https://golang.org/doc/effective_go.html)
-- Diagnostics (https://golang.org/doc/diagnostics.html)
-- Frequently Asked Questions (FAQ) (https://golang.org/doc/faq)
-- Package Documentation (https://golang.org/pkg)
-- Command Documentation (https://golang.org/cmd/)
-- Language Specification (https://golang.org/ref/spec)
-- The Go Memory Model (https://golang.org/ref/mem)
+- Effective Go (https://go.dev/doc/effective_go.html)
+- Diagnostics (https://go.dev/doc/diagnostics.html)
+- Frequently Asked Questions (FAQ) (https://go.dev/doc/faq)
+- Package Documentation (https://go.dev/pkg)
+- Command Documentation (https://go.dev/cmd/)
+- Language Specification (https://go.dev/ref/spec)
+- The Go Memory Model (https://go.dev/ref/mem)
 
 # Contents
 
