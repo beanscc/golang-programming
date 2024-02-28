@@ -1,8 +1,140 @@
 # map
 
-map 用于存储一系列 k/v 键值对, 迭代遍历时返回元素的顺序是乱序的，和 key 的存储顺序无关
+map 用于存储 key/value 键值对，可基于 key 去重
 
-## 数据结构
+key 要求是可比较的（go 1.18 版本引入了 `comparable`），不能是引用类型，如 channel/func/map
+
+迭代遍历时返回元素的顺序是乱序的，和 key 的存储顺序无关
+
+
+
+## 基本使用
+
+### 初始化
+
+go 中 map 的初始化有一下方式：
+
+- 使用字面量方式初始化：`m := map[string]int{"a": 1}`
+- 使用关键字 make 进行初始
+    - 不指定容量：`m := make(map[string]int)`
+    - 指定容量：`m := make(map[string]int, 3)`
+
+
+
+### 写/赋值
+
+赋值就较简单的了，
+
+```go
+m["b"] = 3
+m["c"] = 0
+```
+
+但需要注意的是，赋值前 **一定** **一定** **一定** 记得先初始化 map；若 map 未进行初始化，直接赋值，将导致 panic
+
+```go
+type plainError string
+panic(plainError("assignment to entry in nil map"))
+```
+
+
+
+### 读
+
+从 map 中查询 key 有以下 2 种方式：
+
+```go
+m := map[string]int{}
+v := m["c"] // val = 0
+
+// 赋值
+m["c"] = 0
+v1 := m["c"]
+```
+
+上面这种方式，若 key 存在，则返回对应的 val，若key 不存在，则返回 value 类型的零值，总之一定会返回一个值，但无法通过值来判断 key 是否存在，如示例中因为刚开始  `c` 这个 key 并不存在于 `m` 中，所以返回的 `v` 是 0，但我们显式地赋值后，再次读取时 `v1` 依然是 0
+
+若需要判断 key 是否存在于 map 中就需要下面这种方式了
+
+```go
+m := map[string]int{}
+v, ok := m["c"] // v: 0, ok: false
+
+// 赋值
+m["c"] = 0
+v1, ok := m["c"] // v1:0, ok: true
+```
+
+上面这种方式返回的第二个参数，用于表示 key 是否存在于 map 中
+
+
+
+### 遍历
+
+通过下面这种方式可以遍历 map
+
+> 需要注意的是，go 的 map 在遍历时时无序的，和key存储时的顺序无关，多次遍历得到的 key 顺序是不同的，**一定不要依赖遍历的 key 顺序**
+
+
+
+方式1：遍历时返回 k/v 
+
+```go
+for k, v := range m {
+    // ...
+}
+
+// 不关心 k，只需要 v
+for _, v := range m {
+    // ...
+}
+```
+
+方式2：遍历时只返回 k
+
+```go
+for k := range m {
+    // ...    
+}
+```
+
+
+
+### 删除
+
+删除时
+
+若 key 存在，则会从 map 中删除 key
+
+若 key 不存在或者 map 未初始化，go 不会进行操作，也不会有显式地提示
+
+```go
+delete(m, "k")
+```
+
+
+
+### len
+
+`len` 返回 map 中的元素个数
+
+```go
+len(m)
+```
+
+
+
+### clear
+
+`clear` 将清空 map 中所有 k/v 键值对
+
+```go
+clear(m)
+```
+
+
+
+## 实现原理
 
 先整体看下 map 在内存中的布局：
 
@@ -104,8 +236,7 @@ map 其实是一个 hash table. 数据保存在桶（`bucket`）中的数组中�
 
 当 hash 表扩容时，bucket 的数量是以 `2^B` 增长。将逐渐的从旧桶中复制数据到新桶
 
-
-## 初始化
+### 初始化
 
 初始化的 map 的两种方法：
 - 通过字面量初始化
@@ -257,7 +388,6 @@ func makeBucketArray(t *maptype, b uint8, dirtyalloc unsafe.Pointer) (buckets un
 ```
 
 
-## 访问
 
 ### 查找
 
@@ -278,7 +408,7 @@ for k, v := range map {
 
 
 
-## 赋值
+### 赋值
 
 源码走读
 ```go
@@ -423,11 +553,11 @@ done:
 
 
 
-## 删除
+### 删除
 
 
 
-## 扩容和迁移
+### 扩容和迁移
 
 
 
