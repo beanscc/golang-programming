@@ -2,10 +2,8 @@
 
 ### 相关文章
 
-- https://blog.golang.org/advanced-go-concurrency-patterns
-- https://blog.golang.org/context
-- https://blog.golang.org/pipelines
-- https://blog.golang.org/share-memory-by-communicating
-- https://blog.golang.org/go-concurrency-patterns-timing-out-and [译文](timing_out-moving_on.md)
-- https://go.dev/blog/concurrency-timeouts [译文](timing_out-moving_on.md)
+- [Go Concurrency Patterns: Context](https://go.dev/blog/context)
+- [Go Concurrency Patterns: Pipelines and cancellation](https://go.dev/blog/pipelines)
+- [Advanced Go Concurrency Patterns](https://go.dev/blog/io2013-talk-concurrency)
+- [Go Concurrency Patterns: Timing out, moving on](https://go.dev/blog/concurrency-timeouts) [译文](timing_out-moving_on.md)
 
