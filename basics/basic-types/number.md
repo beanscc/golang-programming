@@ -23,9 +23,13 @@ Go 提供了 11 种整型，其中包括 5 种有符号的和 5 种无符号的�
 > 有符号整型采用 2 的补码形式表示，高位表示符号位；一个 n 位有符号数的取值范围是： $-2^{n-1}$ ~ $2^{n-1}-1$     
 > 无符号整数的所有 bit 位都表示非负数；一个 n 位无符号数的取值范围是：$0 ~ 2^{n}-1$
 
+
+
 每种数值类型都不同，所以不同数值类型之间不能直接进行二进制数值运算或者比较操作
 
 > 无类型的数值常量，可以兼容表达式中任何内置类型的数值
+
+
 
 若需要在不同数值类型之间进行数值运算或比较操作，必须先进行类型转换，通常将类型转换成较大的类型以防止精度丢失。
 
@@ -33,123 +37,7 @@ Go 提供了 11 种整型，其中包括 5 种有符号的和 5 种无符号的�
 
 标准库中提供了 `big.Int` 类型的整数和 `big.Rat`（处理财务计算时特别有用） 类型的有理数，这些都是不限大小的（只限于机器的内存）
 
-#### 位运算
 
-| 操作符 | 说明 | 规则 | 适用对象|
-| :--- | :---- | :---- | :---- |
-| & | 位运算 AND | 同位都是 1，则该位取 1，否则取 0 | 有/无符号数 |
-| \| | 位运算 OR | 同位都是 0，取 0。也就是说同位只要有一个 1，则取 1 | 有/无符号数 |
-| ^ | 位运算 XOR | 同0异1；即同位相同时，取 0，不同时取 1 | 有/无符号数 |
-| &^ | 位清空 AND NOT | 根据左边的数，按位相异的保留左边位，相同的位清零 | 有/无符号数 |
-| << | 左移 | 左边数的二进制位向左移动，移动后数值变小 | 无符号数 |
-| >> | 右移 | 左边数的二进制位向右移动，移动后数值变大 | 无符号数 |
-
-
-
-参考：https://blog.csdn.net/yjk13703623757/article/details/83958320?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link
-
-
-
-位运算符规则说明：操作符左边的数和右边的数按二进制位进行计算
-
-`&`
-
-`|`
-
-`^`
-
-`&^` 示例：
-
-```
-0001 0100 &^ 0000 1111 = 16
-
-   0001 0100    = 20
-&^ 0000 1111    = 15
--------------
-   0001 0000    = 16
-```
-
-
-
-`<<`
-
-`>>`
-
-
-
-
-
-##### 位运算的使用
-
-
-
-- `x & (x -1)` ：将 x 的最右侧的 1 变为 0
-
-    - 判断一个整数是否是 2 的 n 次方: `x & (x-1) == 0`
-
-    ```go
-    package main
-    
-    import "fmt"
-    
-    func main() {
-    	x := 12
-    	fmt.Printf("x:%d, 是否是偶数：%t\n", x, isEven(x))
-    	x = 0
-    	fmt.Printf("x:%d, 是否是偶数：%t\n", x, isEven(x))
-    	x = 4
-    	fmt.Printf("x:%d, 是否是偶数：%t\n", x, isEven(x))
-    	x = 6
-    	fmt.Printf("x:%d, 是否是偶数：%t\n", x, isEven(x))
-    	x = 3
-    	fmt.Printf("x:%d, 是否是偶数：%t\n", x, isEven(x))
-    	x = 7
-    	fmt.Printf("x:%d, 是否是偶数：%t\n", x, isEven(x))
-    }
-    
-    // 是否 2 的 n 次方
-    func isEven(x int) bool {
-    	return x&(x-1) == 0
-    }
-    /* output:
-    x:12, 是否是偶数：false
-    x:0, 是否是偶数：true
-    x:4, 是否是偶数：true
-    x:6, 是否是偶数：false
-    x:3, 是否是偶数：false
-    x:7, 是否是偶数：false
-    */
-    ```
-
-    
-    - 计算统计一个正整数的二进制中包含多少个 1
-
-    ```go
-    package main
-    
-    import "fmt"
-    
-    func main() {
-    	x := 0b101011 // 0b 表示二进制表示
-    	fmt.Printf("x:%b, 二进制表示中 1 的个数：%d", x, count1InBinary(x))
-    }
-    
-    func count1InBinary(x int) int {
-    	n := 0
-    	for {
-    		if x > 0 {
-    			x = x & (x - 1)
-    			n++
-    		} else {
-    			break
-    		}
-    	}
-    	return n
-    }
-    // output: x:101011, 二进制表示中 1 的个数：4
-    ```
-
-    
 
 ### 浮点型
 
@@ -178,6 +66,4 @@ fmt.Println(f == f+1) // true
 ### 复数
 
 Go 提供了 2 种类型的复数类型：`complex64` 和 `complex128`，分别对应 `float32` 和 `float64` 两种浮点精度
-
-### 算术操作符
 

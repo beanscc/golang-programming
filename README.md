@@ -15,37 +15,30 @@ golang playground (https://go.dev/play/)
 - Language Specification (https://go.dev/ref/spec)
 - The Go Memory Model (https://go.dev/ref/mem)
 
-# Contents
 
-1. Get Started 
 
+**Contents**
+
+
+
+- Get Started 
     - [安装](install.md)
-
-2. 基础
-
-    1. [packages](basics/basic/packages.md)
-    2. [命名](basics/basic/names.md)
-    3. [声明和作用域](basics/basic/declarations-and-scope.md)
-    4. 变量
-
+- 基础
+    - [packages](basics/basic/packages.md)
+    - [命名](basics/basic/names.md)
+    - [声明和作用域](basics/basic/declarations-and-scope.md)
+    - 变量
     - 赋值
     - 类型
     - 包和文件
-    - 作用域
-    
-3. 基础数据结构
 
-4. 控制结构
-
-    1. 流程控制
-        1. if else
-        2. switch
-
-    2. 循环控制 for
-    3. goto
-    4. defer
-
-
+- 控制结构
+    - 流程控制
+        - if else
+        - switch
+    - 循环控制 for
+    - goto
+    - defer
 
 - Basic types
 
@@ -65,8 +58,8 @@ golang playground (https://go.dev/play/)
     - [map](reference-types/map.md)
     - [function](reference-types/function.md)
     - [channel](reference-types/channel.md)
-- [Interface](interface/interface.md)
-- [Reflection](reflect/reflect.md)
+- [interface](interface/interface.md)
+- [reflection](reflect/reflect.md)
 - error
 - defer and panic
     - [defer](errors/defer.md)
@@ -112,12 +105,11 @@ golang playground (https://go.dev/play/)
     - std 标准包
         - [flag](packages/std/flag.md)
         - [json](packages/std/json.md)
-    - 第三方包
-        - [singleflight](packages/singleflight/singleflight.md)
 - go 查看用户代码对应汇编代码和runtime源码
-- 附录
+- [附录](appendix)
+    - [csv 文件操作和常见问题处理](appendix/csv.md)
     - wire 依赖注入：https://github.com/google/wire
-
+    - [singleflight](appendix/singleflight.md)
 
 - 遇到的问题
     - [fmt panic](problem/race-fmt-panic.md)
