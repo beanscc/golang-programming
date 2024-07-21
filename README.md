@@ -19,8 +19,6 @@ golang playground (https://go.dev/play/)
 
 **Contents**
 
-
-
 - Get Started 
     - [安装](install.md)
 - 基础
@@ -42,11 +40,13 @@ golang playground (https://go.dev/play/)
 
 - Basic types
 
-    - [bool](basic-types/bool.md)
+    - [bool](basics/basic-types/bool.md)
 
-    - [number](basic-types/number.md)
+    - [number](basics/basic-types/number.md)
 
-    - [string](basic-types/string.md)
+    - [string](basics/basic-types/string.md)
+    
+    - [operators](basics/basic-types/operators.md)
 
 
 - Aggregate types
