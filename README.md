@@ -38,15 +38,15 @@ golang playground (https://go.dev/play/)
     - goto
     - defer
 
-- Basic types
+- 数据结构
 
-    - [bool](basics/basic-types/bool.md)
+    - [bool](basics/types/boolean.md)
 
-    - [number](basics/basic-types/number.md)
+    - [number](basics/types/numeric.md)
 
-    - [string](basics/basic-types/string.md)
+    - [string](basics/types/string.md)
     
-    - [operators](basics/basic-types/operators.md)
+    - [operators](basics/types/operators.md)
 
 
 - Aggregate types
