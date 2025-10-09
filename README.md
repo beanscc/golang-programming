@@ -19,8 +19,7 @@ golang playground (https://go.dev/play/)
 
 **Contents**
 
-- Get Started 
-    - [安装](install/install.md)
+- [下载安装](install/install.md)
 - 基础
     - [packages](basics/basic/packages.md)
     - [命名](basics/basic/names.md)
@@ -64,17 +63,17 @@ golang playground (https://go.dev/play/)
 - defer and panic
     - [defer](errors/defer.md)
     - [panic](errors/panic.md)
-- Concurrency
+- concurrency
     - [context](concurrency/context.md)
     - sync
-        - [Lock](sync/lock.md)
+        - [lock](sync/lock.md)
             - Mutex
             - RWMutex
             - Cond
-        - [Map](sync/map.md)
-        - [Pool](sync/pool.md)
-        - [Once](sync/once.md)
-        - [WaitGroup](sync/waitgroup.md)
+        - [map](sync/map.md)
+        - [pool](sync/pool.md)
+        - [once](sync/once.md)
+        - [waitGroup](sync/waitgroup.md)
     - [timer](time/timer.md)
     - [channel](channle/channel.md)
         - channel
