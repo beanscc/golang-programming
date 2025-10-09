@@ -20,7 +20,7 @@ golang playground (https://go.dev/play/)
 **Contents**
 
 - Get Started 
-    - [安装](install.md)
+    - [安装](install/install.md)
 - 基础
     - [packages](basics/basic/packages.md)
     - [命名](basics/basic/names.md)
