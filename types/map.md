@@ -1,10 +1,17 @@
 # map
 
-map 用于存储 key/value 键值对，可基于 key 去重
+map 用于存储 key/value 键值对，迭代遍历时返回元素的顺序是乱序的，和 key 的存储顺序无关。
 
-key 要求是可比较的（go 1.18 版本引入了 `comparable`），不能是引用类型，如 channel/func/map
+key 要求是可比较的（go 1.18 版本引入了 `comparable`），因此不能是 func/map/slice。若 key 是 interface 类型，则必须为动态 key 值定义比较操作；失败将导致运行时 panic
 
-迭代遍历时返回元素的顺序是乱序的，和 key 的存储顺序无关
+
+
+```go
+// map[key]value
+map[string]int
+map[*T]struct{ x, y float64}
+map[string]interface{}
+```
 
 
 
